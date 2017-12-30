@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">iCow</string>
+    <string name="action_settings">settings</string>
 </resources>
