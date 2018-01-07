@@ -1,18 +1,30 @@
 package com.android.icow;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     Toolbar toolbar;
+    CardView cd1;
+    RecyclerView recyclerView;
+    RecyclerView.LayoutManager layoutManager;
+    /*RecyclerView.Adapter adapter;*/
+    RecyclerAdapter adapter;
 
+    List<NotizCard> notizCardListist;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,18 +35,51 @@ public class MainActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.my_toolbar);
                 //toolbar aktivieren
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("My title");
+        getSupportActionBar().setTitle("Einkaufsliste");
+
+
+
+        notizCardListist = new ArrayList<>();
+
+        recyclerView = findViewById(R.id.recycler_view);
+        recyclerView.setHasFixedSize(true);/*(keine Ahnung warum)*/
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        notizCardListist.add(
+                new NotizCard(1,"a","a","a",R.drawable.controller));
+
+        adapter = new RecyclerAdapter(this, notizCardListist);
+        recyclerView.setAdapter(adapter);
+
+
+
+
+
+
+
+        /*cd1 = (CardView) findViewById(R.id.card1);
+        cd1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "You clicked Card 1", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        //CardView ClickEvent to new Activity
+        cd1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), Notiz.class);
+                startActivity(intent);
+            }
+        });*/
 
     }
 
 
 
 
-//button
-    public void button(View view) {
-        Intent intent = new Intent(this, Notiz.class);
-        startActivity(intent);
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -47,8 +92,6 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, Settings.class);
         startActivity(intent);
     return true;}
-
-
 
 
 
