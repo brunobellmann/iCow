@@ -23,10 +23,10 @@
             card_view:contentPadding="7dp">
 
             <RelativeLayout
+                android:id="@+id/RelativeLayoutCardView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
-<!--comment-->
                 <TextView
                     android:id="@+id/card_title"
                     android:layout_width="wrap_content"

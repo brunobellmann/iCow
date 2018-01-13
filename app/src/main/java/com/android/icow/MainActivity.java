@@ -47,10 +47,26 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         notizCardListist.add(
-                new NotizCard(1,"a","a","a",R.drawable.controller));
+                new NotizCard(1,"Titel","Content Content Content Content","12.12.1221",R.drawable.controller));
 
         adapter = new RecyclerAdapter(this, notizCardListist);
         recyclerView.setAdapter(adapter);
+
+        // test der Add funktion
+        for(int i = 0; i<= 5; i++){
+            NotizCard notizCard = new NotizCard(
+                    i+1, "lol"+i, "lol"+1, "1.12.1222", R.drawable.controller);
+
+            notizCardListist.add(notizCard);
+
+
+            adapter = new RecyclerAdapter(this, notizCardListist);
+            recyclerView.setAdapter(adapter);
+
+        }
+
+
+
 
 
 
@@ -70,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
         cd1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Notiz.class);
+                Intent intent = new Intent(getApplicationContext(), NotizDetails.class);
                 startActivity(intent);
             }
         });*/
