@@ -18,7 +18,7 @@ import java.util.List;
  * Created by Maxet on 06.01.2018.
  */
 
-public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.NotizViewHolder> {
+public class  RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.NotizViewHolder> {
 
     private Context mCtx;/*für inflator*/
     private List<NotizCard> notizlist; /*vllt NotizCardList*/

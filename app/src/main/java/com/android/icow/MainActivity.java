@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+import android.support.design.widget.FloatingActionButton;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView.LayoutManager layoutManager;
     /*RecyclerView.Adapter adapter;*/
     RecyclerAdapter adapter;
+    FloatingActionButton button;
 
     List<NotizCard> notizCardListist;
 
@@ -33,11 +35,9 @@ public class MainActivity extends AppCompatActivity {
 
         //toolbar
         toolbar = (Toolbar) findViewById(R.id.my_toolbar);
-                //toolbar aktivieren
+        //toolbar aktivieren
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Einkaufsliste");
-
-
 
         notizCardListist = new ArrayList<>();
 
@@ -47,27 +47,40 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         notizCardListist.add(
-                new NotizCard(1,"Titel","Content Content Content Content","12.12.1221",R.drawable.controller));
+                new NotizCard(1, "Titel", "Content Content Content Content", "12.12.1221", R.drawable.controller));
 
         adapter = new RecyclerAdapter(this, notizCardListist);
         recyclerView.setAdapter(adapter);
 
+        FloatingActionButton button = (FloatingActionButton) findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NotizCard notizCard = new NotizCard(
+                        1, "lol", "lol", "1.12.1222", R.drawable.controller);
+
+                notizCardListist.add(notizCard);
+                recyclerView.setAdapter(adapter);
+            }
+        });
+
+
+
+
+
         // test der Add funktion
-        for(int i = 0; i<= 5; i++){
-            NotizCard notizCard = new NotizCard(
-                    i+1, "lol"+i, "lol"+1, "1.12.1222", R.drawable.controller);
+        // for(int i = 0; i<= 5; i++){
+        //   NotizCard notizCard = new NotizCard(
+        //            i+1, "lol"+i, "lol"+1, "1.12.1222", R.drawable.controller);
 
-            notizCardListist.add(notizCard);
-
-
-            adapter = new RecyclerAdapter(this, notizCardListist);
-            recyclerView.setAdapter(adapter);
-
-        }
+        //     notizCardListist.add(notizCard);
 
 
+        //   adapter = new RecyclerAdapter(this, notizCardListist);
+        //   recyclerView.setAdapter(adapter);
 
 
+    }
 
 
 
@@ -91,11 +104,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });*/
 
-    }
-
-
-
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -107,8 +115,9 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         Intent intent = new Intent(this, Settings.class);
         startActivity(intent);
-    return true;}
-
+        return true;
+    }
+}
 
 
 
@@ -116,4 +125,3 @@ public class MainActivity extends AppCompatActivity {
     //Inhalt
 
 
-}
