@@ -6,4 +6,6 @@
     <color name="normal">#ffffff</color>
     <color name="pressed">#f0f0f0</color>
     <color name="selected">#dddddd</color>
+    <color name="kitkat_gray_dark">#25000000</color>
+    <color name="kitkat_gray_light">#19000000</color>
 </resources>

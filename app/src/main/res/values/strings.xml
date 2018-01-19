@@ -2,4 +2,6 @@
     <string name="app_name">iCow</string>
     <string name="action_settings">settings</string>
     <string name="Test_text">TESTESTETSTEtSDSDLOLOLOLOL</string>
+    <string name="title">Titel</string>
+    <string name="content">Ihre Notiz</string>
 </resources>

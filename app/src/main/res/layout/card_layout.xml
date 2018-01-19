@@ -34,7 +34,7 @@
                     android:layout_alignParentTop="true"
                     android:text="Title"
                     android:textColor="#353535"
-                    android:textSize="24sp"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -44,7 +44,7 @@
                     android:layout_below="@+id/card_title"
                     android:layout_marginTop="5dp"
                     android:text="@string/Test_text"
-                    android:textSize="16sp" />
+                    android:textSize="14sp" />
 
                 <ImageView
                     android:id="@+id/card_image"
@@ -53,6 +53,26 @@
 
                 <TextView
                     android:id="@+id/card_datum"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/card_title"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@+id/card_title"
+                    android:layout_marginTop="5dp"
+                    android:text="test"
+                    android:textSize="10sp" />
+                <TextView
+                    android:id="@+id/loc_lat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/card_title"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@+id/card_title"
+                    android:layout_marginTop="5dp"
+                    android:text="test"
+                    android:textSize="10sp" />
+                <TextView
+                    android:id="@+id/loc_lon"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/card_title"
