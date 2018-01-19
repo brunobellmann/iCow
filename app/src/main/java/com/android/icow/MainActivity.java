@@ -45,8 +45,6 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 
-
-
         /*List<NotizCard> notizenliste = new ArrayList<>();
         myDB = new DatabaseHelper(this);
         NotizCard notiz;
