@@ -19,14 +19,14 @@ import android.support.design.widget.FloatingActionButton;
 
 public class MainActivity extends AppCompatActivity {
 
+
     Toolbar toolbar;
     CardView cd1;
+    List<NotizCard> notizCards;
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
-    /*RecyclerView.Adapter adapter;*/
     RecyclerAdapter adapter;
     FloatingActionButton button;
-    DatabaseHelper myDB;
 
 
 
@@ -40,35 +40,11 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Einkaufsliste");
 
 
-        recyclerView = findViewById(R.id.recycler_view);
-        /*recyclerView.setHasFixedSize(true);/*(keine Ahnung warum)*/
+        this.recyclerView = findViewById(R.id.recycler_view);
+        this.notizCards = DatabaseHelper.getInstance(this).readAllEntries();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-
-        /*List<NotizCard> notizenliste = new ArrayList<>();
-        myDB = new DatabaseHelper(this);
-        NotizCard notiz;
-
-        Cursor data = myDB.getListContents();
-        if(data.getCount() == 0){
-            Toast.makeText(this, "There are no contents in this list!",Toast.LENGTH_LONG).show();
-        }else{
-            while(data.moveToNext()){
-                notizlist.add(data.getString(1));//Col2 = 1
-                adapter = new RecyclerAdapter(this,notizlist);
-                recyclerView.setAdapter(adapter);
-            }
-        }
-*/
-
-
-
-        /*notizCardListist.add(
-                new NotizCard(1, "Titel", "Content Content Content Content", "12.12.1221", R.drawable.controller));
-
-        adapter = new RecyclerAdapter(this, notizCardListist);
-        recyclerView.setAdapter(adapter);*/
-
+        this.adapter = new RecyclerAdapter(this, notizCards);
+        this.recyclerView.setAdapter(adapter);
 
 
 
@@ -76,26 +52,14 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*NotizCard notizCard = new NotizCard(
-                        1, "lol", "lol", "1.12.1222", R.drawable.controller);
+                NotizCard notizCard = new NotizCard(
+                        1, "lol", "lol", "1.12.1222", null, null,null);
 
-                notizCardListist.add(notizCard);
-                recyclerView.setAdapter(adapter);*/
+                notizCards.add(notizCard);
                 Intent intent = new Intent(getApplicationContext(), NotizDetails.class);
                 startActivity(intent);
             }
         });
-
-//populate an ArrayList<String> from the database and then view it
-
-
-
-
-
-
-
-
-
 
 
 
@@ -114,29 +78,17 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        refreshRecyclerView();
+    }
 
-
-
-
-
-
-        /*cd1 = (CardView) findViewById(R.id.card1);
-        cd1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "You clicked Card 1", Toast.LENGTH_LONG).show();
-            }
-        });
-
-        //CardView ClickEvent to new Activity
-        cd1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), NotizDetails.class);
-                startActivity(intent);
-            }
-        });*/
-
+    private void refreshRecyclerView() {
+        notizCards.clear();
+        notizCards.addAll(DatabaseHelper.getInstance(this).readAllEntries());
+        adapter.notifyDataSetChanged();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -151,10 +103,3 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 }
-
-
-
-
-    //Inhalt
-
-

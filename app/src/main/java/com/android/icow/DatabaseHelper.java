@@ -11,10 +11,14 @@ package com.android.icow;
         import android.database.sqlite.SQLiteOpenHelper;
         import android.util.Log;
 
+        import java.util.ArrayList;
+        import java.util.List;
+
 public class DatabaseHelper extends SQLiteOpenHelper {
 
+    public static DatabaseHelper INSTANCE = null;
     public static final String DATABASE_NAME = "notiz";
-    private static final int DATABASE_VERSION = 14;
+    private static final int DATABASE_VERSION = 16;
     public static final String TABLE_NAME = "NotizCard";
     public static final String ID = "id";
     public static final String LAST_MODIFICATION = "last_modification";
@@ -25,6 +29,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String IMAGE = "image";
     /*public static final String KEY_ADDRESS = "address";*/
 
+
+    public static DatabaseHelper getInstance(final Context context) {
+        if (INSTANCE == null) {
+            INSTANCE = new DatabaseHelper(context);
+        }
+
+        return INSTANCE;
+    }
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -50,6 +62,27 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         this.onCreate(db);
     }
 
+
+    public NotizCard createEntry(final NotizCard notizCard) {
+        SQLiteDatabase database = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(LAST_MODIFICATION, 0);
+        values.put(TITLE, notizCard.getTitle());
+
+        values.put(CONTENT, notizCard.getContent());
+
+        values.put(LATITUDE, 0);
+        values.put(LONGITUDE, 0);
+
+        long newID = database.insert(TABLE_NAME, null, values);
+
+        database.close();
+
+        return readEntry(newID);
+
+    }
+
     public void saveNewNotiz(NotizCard notiz) {
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -73,6 +106,48 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor data = db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
         return data;
+    }
+    public List<NotizCard> readAllEntries() {
+        List<NotizCard> todos = new ArrayList<>();
+        SQLiteDatabase database = this.getReadableDatabase();
+
+        Cursor cursor = database.rawQuery("SELECT * FROM " + TABLE_NAME, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                NotizCard notizCard = readEntry(cursor.getLong(cursor.getColumnIndex(ID)));
+                if (notizCard != null) {
+                    todos.add(notizCard);
+                }
+            } while (cursor.moveToNext());
+        }
+
+        database.close();
+
+        return todos;
+    }
+
+    public NotizCard readEntry(final long id) {
+        SQLiteDatabase database = this.getReadableDatabase();
+        Cursor cursor = database.query(TABLE_NAME, new String[]{ID, TITLE, CONTENT, LATITUDE, LONGITUDE, IMAGE}, ID + " = ?", new String[]{String.valueOf(id)}, null, null, null);
+
+        NotizCard notizCard = null;
+
+        if (cursor != null && cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            notizCard = new NotizCard(cursor.getString(cursor.getColumnIndex(TITLE)));
+            notizCard.setId(cursor.getLong(cursor.getColumnIndex(ID)));
+
+            notizCard.setContent(cursor.getString(cursor.getColumnIndex(CONTENT)));
+            notizCard.setContent(cursor.getString(cursor.getColumnIndex(LATITUDE)));
+            notizCard.setContent(cursor.getString(cursor.getColumnIndex(LONGITUDE)));
+            notizCard.setContent(cursor.getString(cursor.getColumnIndex(IMAGE)));
+
+        }
+
+        database.close();
+
+        return notizCard;
     }
 }
 

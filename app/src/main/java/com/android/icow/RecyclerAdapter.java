@@ -96,22 +96,6 @@ public class  RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Notiz
 
     }
 
-    public void add(int position, NotizCard notiz) {
-        mNotizCardList.add(position, notiz);
-        notifyItemInserted(position);
-    }
-
-    public void remove(int position) {
-        mNotizCardList.remove(position);
-        notifyItemRemoved(position);
-    }
-
-    public RecyclerAdapter(Context mCtx, List<NotizCard> mnotizliste,Context context, RecyclerView recyclerView) {
-        mNotizCardList = mnotizliste;
-        mCtx = context;
-        mRecyclerV = recyclerView;
-    }
-
 
 
 

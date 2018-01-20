@@ -5,6 +5,8 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,6 +20,7 @@ public class NotizDetails extends AppCompatActivity {
     EditText mContentEditText;
     DatabaseHelper myDB;
     Button button;
+    private NotizCard notizCard;
 
 
     @Override
@@ -28,45 +31,63 @@ public class NotizDetails extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(toolbar);
 
+
         actionBar = getSupportActionBar();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+        this.notizCard = new NotizCard();
 
         mTitleEditText = (EditText)findViewById(R.id.detail_title);
         mContentEditText = (EditText)findViewById(R.id.detail_content);
         button = (Button)findViewById(R.id.button_add);
-
-
-
-        button.setOnClickListener(new View.OnClickListener() {
+        this.mTitleEditText.addTextChangedListener(new TextWatcher() {
             @Override
-            public void onClick(View v) {
-                save();
-                Toast.makeText(getApplicationContext(), "This is my Toast message!",
-                        Toast.LENGTH_LONG).show();
+            public void beforeTextChanged(final CharSequence charSequence, final int i, final int i1, final int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(final CharSequence charSequence, final int i, final int i1, final int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(final Editable editable) {
+                notizCard.setTitle(editable.toString().length() == 0 ? null : editable.toString());
             }
         });
 
-    }
+        this.mContentEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(final CharSequence charSequence, final int i, final int i1, final int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(final CharSequence charSequence, final int i, final int i1, final int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(final Editable editable) {
+                notizCard.setContent(editable.toString().length() == 0 ? null : editable.toString());
+            }
+        });
 
 
 
+        this.button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View view) {
+                if (notizCard.getTitle() == null) {
+                    Toast.makeText(NotizDetails.this, "Fehler beim speicher, bitte noch ein namen eingeben.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
-    /*@Override
-    public void onBackPressed() {
-        save();
-        super.onBackPressed();
-    }*/
-
-    public void save() {
-        String title = mTitleEditText.getText().toString().trim();
-        String content = mContentEditText.getText().toString().trim();
-        myDB = new DatabaseHelper(this);
-
-        NotizCard notiz = new NotizCard(0, null, title, content, null, null, null);
-        myDB.saveNewNotiz(notiz);
-
-    }
+                DatabaseHelper.getInstance(NotizDetails.this).createEntry(notizCard);
+                finish();
+            }
+        });
 
     /*public void AddData(String newEntry) {
 
@@ -80,4 +101,4 @@ public class NotizDetails extends AppCompatActivity {
     }*/
 
 
-}
+}}
