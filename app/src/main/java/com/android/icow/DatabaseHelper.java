@@ -9,15 +9,13 @@ package com.android.icow;
         import android.database.Cursor;
         import android.database.sqlite.SQLiteDatabase;
         import android.database.sqlite.SQLiteOpenHelper;
+        import android.util.Log;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
-    public static final String DATABASE_NAME = "notiz.db";
-    private static final int DATABASE_VERSION = 1 ;
+    public static final String DATABASE_NAME = "notiz";
+    private static final int DATABASE_VERSION = 14;
     public static final String TABLE_NAME = "NotizCard";
-  /*public static final String COL1 = "ID";
-    public static final String COL2 = "ITEM1";*/
-
     public static final String ID = "id";
     public static final String LAST_MODIFICATION = "last_modification";
     public static final String TITLE = "title";
@@ -35,14 +33,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(" CREATE TABLE " + TABLE_NAME + " (" +
-                ID + " TEXT NOT NULL, " +
-                LAST_MODIFICATION + " TEXT NOT NULL, " +
+                ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                LAST_MODIFICATION + " TEXT, " +
                 TITLE + " TEXT NOT NULL, " +
                 CONTENT + " TEXT NOT NULL, " +
-                LATITUDE + " TEXT NOT NULL, " +
-                LONGITUDE + " TEXT NOT NULL, " +
-                IMAGE + " TEXT NOT NULL);"
+                LATITUDE + " TEXT, " +
+                LONGITUDE + " TEXT, " +
+                IMAGE + " TEXT)"
         );
+        Log.d("TESTT","testDB");
     }
 
     @Override
@@ -55,13 +54,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(ID, notiz.getTitle());
+        contentValues.put(ID, notiz.getId());
         contentValues.put(LAST_MODIFICATION, notiz.getLast_modification());
         contentValues.put(TITLE, notiz.getTitle());
         contentValues.put(CONTENT, notiz.getContent());
         contentValues.put(LATITUDE, notiz.getLatitude());
         contentValues.put(LONGITUDE, notiz.getLongitude());
-        contentValues.put(IMAGE, notiz.getTitle());
+        contentValues.put(IMAGE, notiz.getImage());
 
 
 

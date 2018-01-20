@@ -57,7 +57,7 @@ public class  RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Notiz
             @Override
             public void onClick(View v) {
                 Toast.makeText(mCtx, "You Clicked "+notiz.getId(), Toast.LENGTH_LONG).show();
-                goToUpdateActivity(notiz.getId());
+                goToUpdateActivity(String.valueOf(notiz.getId()));
             }
         });
 

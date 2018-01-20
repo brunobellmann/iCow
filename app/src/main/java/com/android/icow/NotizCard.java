@@ -7,10 +7,11 @@ package com.android.icow;
 public class NotizCard {
 
 
-    private String id, last_modification, title, content, latitude, longitude, image; //Noch nicht alles benutzt
+    private String last_modification, title, content, latitude, longitude, image;
+    private int id;//Noch nicht alles benutzt
 
 
-    public NotizCard(String id, String last_modification, String title, String content, String latitude, String longitude, String image) {
+    public NotizCard(int id, String last_modification, String title, String content, String latitude, String longitude, String image) {
         this.id = id;
         this.last_modification = last_modification;
         this.title = title;
@@ -20,7 +21,7 @@ public class NotizCard {
         this.image = image;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
@@ -48,7 +49,7 @@ public class NotizCard {
         return image;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

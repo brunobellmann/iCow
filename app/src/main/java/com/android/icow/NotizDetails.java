@@ -52,18 +52,18 @@ public class NotizDetails extends AppCompatActivity {
 
 
 
-    @Override
+    /*@Override
     public void onBackPressed() {
         save();
         super.onBackPressed();
-    }
+    }*/
 
     public void save() {
         String title = mTitleEditText.getText().toString().trim();
         String content = mContentEditText.getText().toString().trim();
         myDB = new DatabaseHelper(this);
 
-        NotizCard notiz = new NotizCard(null, null, title, content, null, null, null);
+        NotizCard notiz = new NotizCard(0, null, title, content, null, null, null);
         myDB.saveNewNotiz(notiz);
 
     }
