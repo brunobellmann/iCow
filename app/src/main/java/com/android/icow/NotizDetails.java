@@ -40,6 +40,7 @@ public class NotizDetails extends AppCompatActivity {
         mTitleEditText = (EditText)findViewById(R.id.detail_title);
         mContentEditText = (EditText)findViewById(R.id.detail_content);
         button = (Button)findViewById(R.id.button_add);
+
         this.mTitleEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(final CharSequence charSequence, final int i, final int i1, final int i2) {

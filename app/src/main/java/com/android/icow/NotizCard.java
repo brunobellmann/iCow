@@ -8,7 +8,7 @@ public class NotizCard {
 
 
     private String last_modification, title, content, latitude, longitude, image;
-    private long id;//Noch nicht alles benutzt
+    private long id;//
 
     public NotizCard() {
         this(0, null, null, null, null, null, null);

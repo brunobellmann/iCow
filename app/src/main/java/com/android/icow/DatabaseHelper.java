@@ -83,7 +83,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
-    public void saveNewNotiz(NotizCard notiz) {
+    /*public void saveNewNotiz(NotizCard notiz) {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -99,16 +99,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         db.insert(TABLE_NAME, null, contentValues);
         db.close();
+    }*/
 
-
-    }
-    public Cursor getListContents(){
-        SQLiteDatabase db = this.getWritableDatabase();
-        Cursor data = db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
-        return data;
-    }
     public List<NotizCard> readAllEntries() {
-        List<NotizCard> todos = new ArrayList<>();
+        List<NotizCard> notizCards = new ArrayList<>();
         SQLiteDatabase database = this.getReadableDatabase();
 
         Cursor cursor = database.rawQuery("SELECT * FROM " + TABLE_NAME, null);
@@ -117,14 +111,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             do {
                 NotizCard notizCard = readEntry(cursor.getLong(cursor.getColumnIndex(ID)));
                 if (notizCard != null) {
-                    todos.add(notizCard);
+                    notizCards.add(notizCard);
                 }
             } while (cursor.moveToNext());
         }
 
         database.close();
 
-        return todos;
+        return notizCards;
     }
 
     public NotizCard readEntry(final long id) {

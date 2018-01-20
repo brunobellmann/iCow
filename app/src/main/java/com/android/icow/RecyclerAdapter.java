@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,8 +31,6 @@ public class  RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Notiz
         this.mNotizCardList = mNotizCardList;
     }
 
-
-    /*Creates Viewholder instance and return an instance of the NotizViewHolder class -> return ViewHolder (UI elements)*/
     @Override
     public NotizViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(mCtx);
@@ -68,9 +67,9 @@ public class  RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Notiz
 
 
 
-    @Override /*returns the size of the List*/
+    @Override
     public int getItemCount() {
-        return mNotizCardList.size(); /*wenn == 0, RecyclerView stellt nichts dar*/
+        return mNotizCardList.size();
     }
 
     class NotizViewHolder extends RecyclerView.ViewHolder {
@@ -92,6 +91,8 @@ public class  RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Notiz
                 RelativeLayoutCardView = (RelativeLayout) itemView.findViewById(R.id.RelativeLayoutCardView);
                 LocLat = itemView.findViewById(R.id.loc_lat);
                 LocLon = itemView.findViewById(R.id.loc_lon);
+
+                Log.e("Test Content", "sucessful");
         }
 
     }
