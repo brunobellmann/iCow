@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
                         1, "lol", "lol", "1.12.1222", null, null,null);
 
                 notizCards.add(notizCard);
-                Intent intent = new Intent(getApplicationContext(), NotizDetails.class);
+                Intent intent = new Intent(getApplicationContext(), Notiz_Add.class);
                 startActivity(intent);
             }
         });
@@ -126,6 +126,4 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
         return true;
     }
-
-
 }

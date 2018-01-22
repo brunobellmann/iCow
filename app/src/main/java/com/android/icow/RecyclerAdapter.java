@@ -25,6 +25,7 @@ public class  RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Notiz
     private Context mCtx;/*für inflator*/
     private List<NotizCard> mNotizCardList; /*vllt NotizCardList*/
     private RecyclerView mRecyclerV;
+    private NotizCard notizCard;
 
     public RecyclerAdapter(Context mCtx, List<NotizCard> mNotizCardList) {
         this.mCtx = mCtx;
@@ -102,11 +103,10 @@ public class  RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Notiz
 
 
 
-    private void goToUpdateActivity(String personId){
+    private void goToUpdateActivity(String ID){
         Intent goToUpdate = new Intent(mCtx, NotizDetails.class);
-        goToUpdate.putExtra("id", personId);
+        goToUpdate.putExtra(NotizDetails.ENTRY_ID_KEY,notizCard.getId());
         mCtx.startActivity(goToUpdate);}
-
 }
 
 

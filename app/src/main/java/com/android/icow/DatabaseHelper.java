@@ -69,20 +69,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(LAST_MODIFICATION, 0);
         values.put(TITLE, notizCard.getTitle());
-
         values.put(CONTENT, notizCard.getContent());
-
         values.put(LATITUDE, 0);
         values.put(LONGITUDE, 0);
 
         long newID = database.insert(TABLE_NAME, null, values);
 
         database.close();
-
         return readEntry(newID);
-
     }
-
 
     public List<NotizCard> readAllEntries() {
         List<NotizCard> notizCards = new ArrayList<>();
@@ -114,18 +109,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             cursor.moveToFirst();
             notizCard = new NotizCard(cursor.getString(cursor.getColumnIndex(TITLE)));
             notizCard.setId(cursor.getLong(cursor.getColumnIndex(ID)));
-
             notizCard.setContent(cursor.getString(cursor.getColumnIndex(CONTENT)));
             notizCard.setContent(cursor.getString(cursor.getColumnIndex(LATITUDE)));
             notizCard.setContent(cursor.getString(cursor.getColumnIndex(LONGITUDE)));
             notizCard.setContent(cursor.getString(cursor.getColumnIndex(IMAGE)));
-
         }
 
         Log.e("Database new Card", "sucessful");
 
         database.close();
-
         return notizCard;
     }
 }
