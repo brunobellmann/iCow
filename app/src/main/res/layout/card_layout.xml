@@ -32,6 +32,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
+                    android:layout_marginLeft="5dp"
                     android:text="Title"
                     android:textColor="#353535"
                     android:textSize="18sp"
@@ -43,6 +44,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/card_title"
                     android:layout_marginTop="5dp"
+                    android:layout_marginLeft="5dp"
                     android:text="@string/Test_text"
                     android:textSize="14sp" />
 

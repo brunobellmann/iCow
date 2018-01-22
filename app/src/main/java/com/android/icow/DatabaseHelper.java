@@ -83,23 +83,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
-    /*public void saveNewNotiz(NotizCard notiz) {
-
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(ID, notiz.getId());
-        contentValues.put(LAST_MODIFICATION, notiz.getLast_modification());
-        contentValues.put(TITLE, notiz.getTitle());
-        contentValues.put(CONTENT, notiz.getContent());
-        contentValues.put(LATITUDE, notiz.getLatitude());
-        contentValues.put(LONGITUDE, notiz.getLongitude());
-        contentValues.put(IMAGE, notiz.getImage());
-
-
-
-        db.insert(TABLE_NAME, null, contentValues);
-        db.close();
-    }*/
 
     public List<NotizCard> readAllEntries() {
         List<NotizCard> notizCards = new ArrayList<>();
@@ -138,6 +121,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             notizCard.setContent(cursor.getString(cursor.getColumnIndex(IMAGE)));
 
         }
+
+        Log.e("Database new Card", "sucessful");
 
         database.close();
 

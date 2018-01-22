@@ -23,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     Toolbar toolbar;
-    CardView cd1;
     List<NotizCard> notizCards;
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
