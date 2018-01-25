@@ -12,7 +12,7 @@
             android:id="@+id/card1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="5dp"
+            android:layout_margin="7dp"
             android:clickable="true"
             android:focusable="true"
             android:state_focused="false"
