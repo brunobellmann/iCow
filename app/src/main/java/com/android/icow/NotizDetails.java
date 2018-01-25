@@ -43,9 +43,8 @@ public class NotizDetails extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-
+        //Intent
         Intent i=getIntent();
-
         final String title = i.getExtras().getString("TITLE");
         final String content = i.getExtras().getString("CONTENT");
         final long id = i.getExtras().getLong("ID");
@@ -58,27 +57,7 @@ public class NotizDetails extends AppCompatActivity {
         titleTxt.setText(title);
         contentTxt.setText(content);
 
-        /*updateBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                update(id,nameTxt.getText().toString(),posTxt.getText().toString());
-            }
-        });
-
-        deleteBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                delete(id);
-            }
-        });*/
-
-
-
-        /*this.notizCard = DatabaseHelper.getInstance(this).readEntry(id);
-        title.setText(notizCard.getTitle());
-        content.setText(notizCard.getContent());*/
-
-
+        //Sharefunktion
         share.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -94,26 +73,6 @@ public class NotizDetails extends AppCompatActivity {
             }
         });
     }
-
-    /*private void update(int id,String newName,String newPos)
-    {
-        DBAdapter db=new DBAdapter(this);
-        db.openDB();
-        long result=db.UPDATE(id,newName,newPos);
-
-        if(result>0)
-        {
-            nameTxt.setText(newName);
-            nameTxt.setText(newPos);
-            Toast.make(nameTxt,"Updated Sucesfully",Snackbar.LENGTH_SHORT).show();
-        }else
-        {
-            Snackbar.make(nameTxt,"Unable to Update",Snackbar.LENGTH_SHORT).show();
-        }
-
-        db.close();
-    }*/
-
 
 
 
