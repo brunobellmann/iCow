@@ -84,9 +84,13 @@ public class NotizDetails extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(Intent.ACTION_SEND);
                 intent.setType("text/plain");
-                String text = notizCard.getTitle() + ":\n" + notizCard.getContent();
-                intent.putExtra(Intent.EXTRA_TEXT, text);
-                startActivity(Intent.createChooser(intent, "Teile deinen Tag mit:"));
+                if(content == null){
+                    String text = title;
+                    intent.putExtra(Intent.EXTRA_TEXT, text);
+                    startActivity(Intent.createChooser(intent, "Teile deinen Tag mit:"));}
+                else {String text = title + ":\n" + content;
+                    intent.putExtra(Intent.EXTRA_TEXT, text);
+                    startActivity(Intent.createChooser(intent, "Teile deinen Tag mit:"));}
             }
         });
     }
