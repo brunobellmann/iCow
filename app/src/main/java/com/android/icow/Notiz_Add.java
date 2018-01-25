@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -90,16 +91,14 @@ public class Notiz_Add extends AppCompatActivity {
             }
         });
 
-    /*public void AddData(String newEntry) {
 
-        boolean insertData = myDB.addData(newEntry);
-
-        if(insertData==true){
-            Toast.makeText(this, "Data Successfully Inserted!", Toast.LENGTH_LONG).show();
-        }else{
-            Toast.makeText(this, "Something went wrong :(.", Toast.LENGTH_LONG).show();
-        }
-    }*/
+    }
 
 
-    }}
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_detail, menu);
+        return true;
+    }
+}

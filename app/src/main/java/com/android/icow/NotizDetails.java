@@ -25,9 +25,8 @@ public class NotizDetails extends AppCompatActivity {
     Toolbar toolbar;
     ActionBar actionBar;
     NotizCard notizCard;
-    EditText titleTxt,contentTxt;
-    Button updateBtn,deleteBtn;
-
+    EditText titleTxt, contentTxt;
+    Button updateBtn, deleteBtn;
 
 
     @Override
@@ -35,7 +34,7 @@ public class NotizDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notizdetails);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        Toolbar toolbar = findViewById(R.id.my_toolbar);
         Button share = (Button) findViewById(R.id.button_share);
 
         setSupportActionBar(toolbar);
@@ -44,7 +43,7 @@ public class NotizDetails extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         //Intent
-        Intent i=getIntent();
+        Intent i = getIntent();
         final String title = i.getExtras().getString("TITLE");
         final String content = i.getExtras().getString("CONTENT");
         final long id = i.getExtras().getLong("ID");
@@ -63,25 +62,16 @@ public class NotizDetails extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(Intent.ACTION_SEND);
                 intent.setType("text/plain");
-                if(content == null){
+                if (content == null) {
                     String text = title;
                     intent.putExtra(Intent.EXTRA_TEXT, text);
-                    startActivity(Intent.createChooser(intent, "Teile deinen Tag mit:"));}
-                else {String text = title + ":\n" + content;
+                    startActivity(Intent.createChooser(intent, "Teile deinen Tag mit:"));
+                } else {
+                    String text = title + ":\n" + content;
                     intent.putExtra(Intent.EXTRA_TEXT, text);
-                    startActivity(Intent.createChooser(intent, "Teile deinen Tag mit:"));}
+                    startActivity(Intent.createChooser(intent, "Teile deinen Tag mit:"));
+                }
             }
         });
     }
-
-
-
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        // Locate MenuItem with ShareActionProvider
-        return true;}
 }
