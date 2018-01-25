@@ -53,8 +53,7 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                NotizCard notizCard = new NotizCard(
-                        1, "lol", "lol", "1.12.1222", null, null,null);
+                NotizCard notizCard = new NotizCard();
 
                 notizCards.add(notizCard);
                 Intent intent = new Intent(getApplicationContext(), Notiz_Add.class);

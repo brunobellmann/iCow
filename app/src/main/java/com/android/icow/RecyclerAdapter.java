@@ -20,10 +20,10 @@ import java.util.List;
  * Created by Maxet on 06.01.2018.
  */
 
-public class  RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.NotizViewHolder> {
+public class  RecyclerAdapter extends RecyclerView.Adapter<NotizViewHolder> {
 
-    private Context mCtx;/*für inflator*/
-    private List<NotizCard> mNotizCardList; /*vllt NotizCardList*/
+    private Context mCtx;
+    private List<NotizCard> mNotizCardList;
     private RecyclerView mRecyclerV;
     private NotizCard notizCard;
 
@@ -38,75 +38,41 @@ public class  RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Notiz
         View view = inflater.inflate(R.layout.card_layout, null);
         NotizViewHolder holder = new NotizViewHolder(view);
         return holder;
-        /*Inline möglich*/
     }
 
     @Override /*binds the data to view*/
-    public void onBindViewHolder(NotizViewHolder holder, int position) {
-        final NotizCard notiz = mNotizCardList.get(position);
+    public void onBindViewHolder(NotizViewHolder holder, final int position) {
 
-        holder.NotizTitleTxtV.setText(notiz.getTitle());
-        holder.NotizContentTxtV.setText(notiz.getContent());
-        holder.NotizLastModTxtV.setText(notiz.getLast_modification());
-
+        holder.NotizTitleTxtV.setText(mNotizCardList.get(position).getTitle());
+        holder.NotizContentTxtV.setText(mNotizCardList.get(position).getContent());
+        holder.NotizLastModTxtV.setText(mNotizCardList.get(position).getLast_modification());
         /*holder.NotizImageV.setImageDrawable(mCtx.getResources().getDrawable(notiz.getImage()));*/
-        holder.LocLat.setText(notiz.getLatitude());
-        holder.LocLon.setText(notiz.getLongitude());
+        holder.LocLat.setText(mNotizCardList.get(position).getLatitude());
+        holder.LocLon.setText(mNotizCardList.get(position).getLongitude());
 
+
+        //toast
         holder.RelativeLayoutCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mCtx, "You Clicked "+notiz.getId(), Toast.LENGTH_LONG).show();
-                goToUpdateActivity(String.valueOf(notiz.getId()));
+                Toast.makeText(mCtx, "You Clicked " + mNotizCardList.get(position).getId(), Toast.LENGTH_LONG).show();
+                Intent i = new Intent(mCtx,NotizDetails.class);
+
+                //LOAD DATA
+                i.putExtra("TITLE",mNotizCardList.get(position).getTitle());
+                i.putExtra("CONTENT",mNotizCardList.get(position).getContent());
+                i.putExtra("ID",mNotizCardList.get(position).getId());
+
+                //START ACTIVITY
+                mCtx.startActivity(i); Log.d("showactivity","sucessful");
+
             }
         });
-
-
-
     }
-
-
 
 
     @Override
     public int getItemCount() {
         return mNotizCardList.size();
     }
-
-    class NotizViewHolder extends RecyclerView.ViewHolder {
-
-            public ImageView NotizImageV;
-            public TextView NotizTitleTxtV, NotizContentTxtV, NotizLastModTxtV, LocLat, LocLon;
-            public RelativeLayout RelativeLayoutCardView;
-
-            public View layout;
-
-
-            public NotizViewHolder(View itemView) {
-            super(itemView);
-
-                NotizImageV = itemView.findViewById(R.id.card_image); /*Möglicherweise muss ein ImageView in der XML vorher definiert werden*/
-                NotizTitleTxtV = itemView.findViewById(R.id.card_title);
-                NotizContentTxtV = itemView.findViewById(R.id.card_content);
-                NotizLastModTxtV = itemView.findViewById(R.id.card_datum);
-                RelativeLayoutCardView = (RelativeLayout) itemView.findViewById(R.id.RelativeLayoutCardView);
-                LocLat = itemView.findViewById(R.id.loc_lat);
-                LocLon = itemView.findViewById(R.id.loc_lon);
-
-                Log.e("Test Content", "sucessful");
-        }
-
-    }
-
-
-
-
-
-
-    private void goToUpdateActivity(String ID){
-        Intent goToUpdate = new Intent(mCtx, NotizDetails.class);
-        goToUpdate.putExtra(NotizDetails.ENTRY_ID_KEY,notizCard.getId());
-        mCtx.startActivity(goToUpdate);}
 }
-
-

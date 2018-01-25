@@ -34,7 +34,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp">
 
-        <TextView
+        <EditText
             android:id="@+id/detail_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -98,7 +98,7 @@
                         <!--android:paddingTop="@dimen/padding_half"-->
 
 
-                        <TextView
+                        <EditText
                             android:id="@+id/detail_content"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -126,11 +126,31 @@
         android:id="@+id/button_share"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
         android:text="share"
+        app:layout_constraintEnd_toStartOf="@+id/button_update"
+        app:layout_constraintTop_toTopOf="@+id/button_update" />
+
+    <Button
+        android:id="@+id/button_update"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="update"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/detail_content_card" />
+
+    <Button
+        android:id="@+id/button_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="delete"
+        app:layout_constraintStart_toEndOf="@+id/button_update"
+        app:layout_constraintTop_toTopOf="@+id/button_update" />
 
 
 </android.support.constraint.ConstraintLayout>

@@ -2,6 +2,7 @@ package com.android.icow;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -23,9 +24,10 @@ public class NotizDetails extends AppCompatActivity {
     public static final String ENTRY_ID_KEY = "ID";
     Toolbar toolbar;
     ActionBar actionBar;
-    private NotizCard notizCard;
-    TextView title;
-    TextView content;
+    NotizCard notizCard;
+    EditText titleTxt,contentTxt;
+    Button updateBtn,deleteBtn;
+
 
 
     @Override
@@ -34,11 +36,7 @@ public class NotizDetails extends AppCompatActivity {
         setContentView(R.layout.activity_notizdetails);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.my_toolbar);
-        long id = getIntent().getLongExtra(ENTRY_ID_KEY,0);
         Button share = (Button) findViewById(R.id.button_share);
-        title = (TextView) findViewById(R.id.detail_title);
-        content = (TextView) findViewById(R.id.detail_content);
-
 
         setSupportActionBar(toolbar);
         actionBar = getSupportActionBar();
@@ -46,9 +44,39 @@ public class NotizDetails extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
 
-        this.notizCard = DatabaseHelper.getInstance(this).readEntry(id);
+        Intent i=getIntent();
+
+        final String title = i.getExtras().getString("TITLE");
+        final String content = i.getExtras().getString("CONTENT");
+        final long id = i.getExtras().getLong("ID");
+
+        updateBtn = (Button) findViewById(R.id.button_update);
+        deleteBtn = (Button) findViewById(R.id.button_delete);
+        titleTxt = (EditText) findViewById(R.id.detail_title);
+        contentTxt = (EditText) findViewById(R.id.detail_content);
+
+        titleTxt.setText(title);
+        contentTxt.setText(content);
+
+        /*updateBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                update(id,nameTxt.getText().toString(),posTxt.getText().toString());
+            }
+        });
+
+        deleteBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                delete(id);
+            }
+        });*/
+
+
+
+        /*this.notizCard = DatabaseHelper.getInstance(this).readEntry(id);
         title.setText(notizCard.getTitle());
-        content.setText(notizCard.getContent());
+        content.setText(notizCard.getContent());*/
 
 
         share.setOnClickListener(new View.OnClickListener() {
@@ -62,6 +90,30 @@ public class NotizDetails extends AppCompatActivity {
             }
         });
     }
+
+    /*private void update(int id,String newName,String newPos)
+    {
+        DBAdapter db=new DBAdapter(this);
+        db.openDB();
+        long result=db.UPDATE(id,newName,newPos);
+
+        if(result>0)
+        {
+            nameTxt.setText(newName);
+            nameTxt.setText(newPos);
+            Toast.make(nameTxt,"Updated Sucesfully",Snackbar.LENGTH_SHORT).show();
+        }else
+        {
+            Snackbar.make(nameTxt,"Unable to Update",Snackbar.LENGTH_SHORT).show();
+        }
+
+        db.close();
+    }*/
+
+
+
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
