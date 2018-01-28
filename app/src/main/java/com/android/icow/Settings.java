@@ -30,10 +30,12 @@ public class Settings extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-     /*   SharedPreferences sp = getSharedPreferences(PREFS_NAME, Activity.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sp.edit();
-        editor.putInt("colornum",colornum);
-        editor.commit(); */
+        SharedPreferences sp = getSharedPreferences(PREFS_NAME,0);
+        colornum = sp.getInt("colornum",colornum);
+        ändern = findViewById(R.id.ändern);
+        ändern.setText(String.valueOf(colornum));
+        color();
+
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(toolbar);
@@ -46,7 +48,6 @@ public class Settings extends AppCompatActivity {
         Button buttonIncrement = findViewById(R.id.increment);
         ändern = findViewById(R.id.ändern);
 
-       // Loadcolornum();
 
         buttonIncrement.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,12 +126,17 @@ public class Settings extends AppCompatActivity {
         outState.putInt("bg",colornum);
     }
 
-    /*public void Loadcolornum () {
-    SharedPreferences sp = getSharedPreferences("MyPrefsFile", Activity.MODE_PRIVATE);
-    colornum = sp.getInt("colornum",colornum);
-    ändern = findViewById(R.id.ändern);
-    colornum = Integer.parseInt(ändern.getText().toString());
-} */
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        SharedPreferences sp = getSharedPreferences(PREFS_NAME,0);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putInt("colornum",colornum);
+        editor.commit();
+
+    }
+
 }
+
 
 
