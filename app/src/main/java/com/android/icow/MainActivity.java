@@ -74,18 +74,6 @@ public class MainActivity extends AppCompatActivity {
         adapter.notifyDataSetChanged();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        // Locate MenuItem with ShareActionProvider
-        MenuItem share = menu.findItem(R.id.menu_item_share);
-
-        myShareActionProvider = (ShareActionProvider)
-                MenuItemCompat.getActionProvider(share);
-        myShareActionProvider.setShareIntent(createShareIntent());
-        return true;
-    }
     private Intent createShareIntent() {
         Intent shareIntent = new Intent(Intent.ACTION_SEND);
         shareIntent.setType("text/plain");
@@ -102,6 +90,20 @@ public class MainActivity extends AppCompatActivity {
 
             myShareActionProvider.setShareIntent(shareIntent);
         }
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        // Locate MenuItem with ShareActionProvider
+        MenuItem share = menu.findItem(R.id.menu_item_share);
+
+        myShareActionProvider = (ShareActionProvider)
+                MenuItemCompat.getActionProvider(share);
+        myShareActionProvider.setShareIntent(createShareIntent());
+        return true;
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {

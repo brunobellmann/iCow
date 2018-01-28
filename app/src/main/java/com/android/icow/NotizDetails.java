@@ -21,7 +21,6 @@ import android.widget.Toast;
 
 public class NotizDetails extends AppCompatActivity {
 
-    public static final String ENTRY_ID_KEY = "ID";
     Toolbar toolbar;
     ActionBar actionBar;
     NotizCard notizCard;
