@@ -76,7 +76,6 @@ public class Notiz_Add extends AppCompatActivity {
                 notizCard.setContent(editable.toString().length() == 0 ? null : editable.toString());
             }
         });
-
     }
 
 

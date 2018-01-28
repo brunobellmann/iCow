@@ -73,5 +73,16 @@ public class NotizDetails extends AppCompatActivity {
                 }
             }
         });
+
+
+        /*deleteBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DatabaseHelper db = DatabaseHelper.getInstance(NotizDetails.this);
+                db.deleteEntry(notizCard);
+                Intent intent = new Intent(NotizDetails.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });*/
     }
 }

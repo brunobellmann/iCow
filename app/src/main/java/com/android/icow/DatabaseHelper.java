@@ -96,7 +96,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
 
         database.close();
-
         return notizCards;
     }
 
@@ -119,6 +118,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return notizCard;
     }
 
+    /*public void deleteEntry(final NotizCard notizCard){
+        SQLiteDatabase database = this.getWritableDatabase();
+        database.delete(TABLE_NAME, ID+" = ?", new String[]{String.valueOf(notizCard.getId())});
+        database.close();
+    }*/
 
 
 }
