@@ -64,11 +64,11 @@ public class NotizDetails extends AppCompatActivity {
                 if (content == null) {
                     String text = title;
                     intent.putExtra(Intent.EXTRA_TEXT, text);
-                    startActivity(Intent.createChooser(intent, "Teile deinen Tag mit:"));
+                    startActivity(Intent.createChooser(intent, "Teile deine Notiz"));
                 } else {
                     String text = title + ":\n" + content;
                     intent.putExtra(Intent.EXTRA_TEXT, text);
-                    startActivity(Intent.createChooser(intent, "Teile deinen Tag mit:"));
+                    startActivity(Intent.createChooser(intent, "Teile deine Notiz"));
                 }
             }
         });
