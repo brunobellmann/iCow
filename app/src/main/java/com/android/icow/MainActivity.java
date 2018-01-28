@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     FloatingActionButton button;
     ShareActionProvider myShareActionProvider;
     View view;
+    FloatingActionButton scannerButton;
 
 
     @Override
