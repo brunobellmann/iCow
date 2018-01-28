@@ -25,7 +25,7 @@ public class NotizDetails extends AppCompatActivity {
     ActionBar actionBar;
     NotizCard notizCard;
     EditText titleTxt, contentTxt;
-    Button updateBtn, deleteBtn;
+    Button updateBtn, deleteBtn, teeestbutton;
 
 
     @Override
@@ -34,12 +34,13 @@ public class NotizDetails extends AppCompatActivity {
         setContentView(R.layout.activity_notizdetails);
 
         Toolbar toolbar = findViewById(R.id.my_toolbar);
-        Button share = (Button) findViewById(R.id.button_share);
+        Button share = findViewById(R.id.button_share);
 
         setSupportActionBar(toolbar);
         actionBar = getSupportActionBar();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setTitle("Notiz " + getIntent().getExtras().getLong("ID"));
 
         //Intent
         Intent i = getIntent();
