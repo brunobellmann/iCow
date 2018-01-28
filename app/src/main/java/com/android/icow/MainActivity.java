@@ -81,35 +81,11 @@ public class MainActivity extends AppCompatActivity {
         adapter.notifyDataSetChanged();
     }
 
-    private Intent createShareIntent() {
-        Intent shareIntent = new Intent(Intent.ACTION_SEND);
-        shareIntent.setType("text/plain");
-        String s = "welcome to android sketchPad";
-        shareIntent.putExtra(Intent.EXTRA_TEXT, s);
-
-        return shareIntent;
-    }
-    private void resetShareActionProvider(String word) {
-        if (myShareActionProvider != null) {
-            Intent shareIntent = new Intent(Intent.ACTION_SEND);
-            shareIntent.setType("text/plain");
-            shareIntent.putExtra(Intent.EXTRA_TEXT, word);
-
-            myShareActionProvider.setShareIntent(shareIntent);
-        }
-    }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
-        // Locate MenuItem with ShareActionProvider
-        MenuItem share = menu.findItem(R.id.menu_item_share);
-
-        myShareActionProvider = (ShareActionProvider)
-                MenuItemCompat.getActionProvider(share);
-        myShareActionProvider.setShareIntent(createShareIntent());
         return true;
     }
 

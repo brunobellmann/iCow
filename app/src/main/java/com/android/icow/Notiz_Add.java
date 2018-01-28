@@ -23,7 +23,6 @@ public class Notiz_Add extends AppCompatActivity {
     EditText mTitleEditText;
     EditText mContentEditText;
     DatabaseHelper myDB;
-    Button button;
     private NotizCard notizCard;
 
 
@@ -37,12 +36,12 @@ public class Notiz_Add extends AppCompatActivity {
         actionBar = getSupportActionBar();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setTitle("Notiz hinzufügen");
 
         this.notizCard = new NotizCard();
 
         mTitleEditText = (EditText) findViewById(R.id.detail_title);
         mContentEditText = (EditText) findViewById(R.id.detail_content);
-        button = (Button) findViewById(R.id.button_add);
 
         this.mTitleEditText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -78,21 +77,6 @@ public class Notiz_Add extends AppCompatActivity {
             }
         });
 
-
-        this.button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(final View view) {
-                if (notizCard.getTitle() == null) {
-                    Toast.makeText(Notiz_Add.this, "Fehler beim speicher, bitte noch ein namen eingeben.", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                DatabaseHelper.getInstance(Notiz_Add.this).createEntry(notizCard);
-                finish();
-            }
-        });
-
-
     }
 
 
@@ -109,8 +93,11 @@ public class Notiz_Add extends AppCompatActivity {
             case R.id.menu_item_save:
                 if (notizCard.getTitle() == null) {
                     Toast.makeText(Notiz_Add.this, "Fehler beim speichern, bitte noch ein Titel eingeben.", Toast.LENGTH_SHORT).show();
-
-                } else {
+                }
+                else if (notizCard.getContent() == null) {
+                    Toast.makeText(Notiz_Add.this, "Fehler beim speichern, bitte noch einen Text eingeben.", Toast.LENGTH_SHORT).show();
+                }
+                else{
                     DatabaseHelper.getInstance(Notiz_Add.this).createEntry(notizCard);
                     finish();
                 }return true;

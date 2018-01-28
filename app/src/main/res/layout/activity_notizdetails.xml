@@ -152,5 +152,4 @@
         app:layout_constraintStart_toEndOf="@+id/button_update"
         app:layout_constraintTop_toTopOf="@+id/button_update" />
 
-
 </android.support.constraint.ConstraintLayout>

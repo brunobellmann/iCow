@@ -41,6 +41,7 @@ public class Settings extends AppCompatActivity {
         actionBar = getSupportActionBar();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setTitle("Einstellungen");
 
         Button buttonDecrement = findViewById(R.id.decrement);
         Button buttonIncrement = findViewById(R.id.increment);

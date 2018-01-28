@@ -8,7 +8,7 @@ public class NotizCard {
 
 
     private String last_modification, title, content, latitude, longitude, image;
-    private long id;//
+    private long id;
 
     public NotizCard() {
         this(0, null, null, null, null, null, null);
@@ -26,10 +26,6 @@ public class NotizCard {
         this.latitude = latitude;
         this.longitude = longitude;
         this.image = image;
-    }
-
-    public long getId() {
-        return id;
     }
 
     public String getLast_modification() {
@@ -56,8 +52,8 @@ public class NotizCard {
         return image;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public long getId() {
+        return id;
     }
 
     public void setLast_modification(String last_modification) {
@@ -82,5 +78,9 @@ public class NotizCard {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 }

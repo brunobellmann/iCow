@@ -23,7 +23,7 @@ class NotizViewHolder extends RecyclerView.ViewHolder {
     public NotizViewHolder(View itemView) {
         super(itemView);
 
-        NotizImageV = itemView.findViewById(R.id.card_image); /*Möglicherweise muss ein ImageView in der XML vorher definiert werden*/
+        NotizImageV = itemView.findViewById(R.id.card_image);
         NotizTitleTxtV = itemView.findViewById(R.id.card_title);
         NotizContentTxtV = itemView.findViewById(R.id.card_content);
         NotizLastModTxtV = itemView.findViewById(R.id.card_datum);

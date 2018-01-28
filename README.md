@@ -16,3 +16,10 @@ Noch kein Verweis auf neue Activity durch drücken der Kachel. (easy zu machen e
 Kachel ist als extra XML definiert, die mit Werten gefüllt werden kann mit .add() funktion.
 
 ---------------------------------------------------------------------------------------------------
+
+28.01.2018
+
+Was wir noch brauchen:
+-löschen, updaten der Notizen
+-farbänderungen
+-qr-scanner
