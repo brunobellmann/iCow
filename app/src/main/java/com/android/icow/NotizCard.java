@@ -8,16 +8,14 @@ public class NotizCard {
 
 
     private String last_modification, title, content, latitude, longitude, image;
-    private long id;//
+    private long id;
 
     public NotizCard() {
         this(0, null, null, null, null, null, null);
     }
-
     public NotizCard(final String title) {
         this(0, null, title, null, null, null, null);
     }
-
     public NotizCard(int id, String last_modification, String title, String content, String latitude, String longitude, String image) {
         this.id = id;
         this.last_modification = last_modification;

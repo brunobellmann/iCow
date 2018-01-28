@@ -25,6 +25,7 @@ public class NotizDetails extends AppCompatActivity {
     ActionBar actionBar;
     NotizCard notizCard;
     EditText titleTxt, contentTxt;
+    TextView textView;
     Button updateBtn, deleteBtn;
 
 
@@ -72,5 +73,10 @@ public class NotizDetails extends AppCompatActivity {
                 }
             }
         });
+
+    textView = findViewById(R.id.textView);
+        this.notizCard = DatabaseHelper.getInstance(this).readEntry(id);
+        textView.setText(notizCard.getTitle());
+
     }
 }

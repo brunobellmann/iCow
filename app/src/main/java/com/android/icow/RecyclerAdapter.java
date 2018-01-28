@@ -46,7 +46,6 @@ public class  RecyclerAdapter extends RecyclerView.Adapter<NotizViewHolder> {
         holder.NotizTitleTxtV.setText(mNotizCardList.get(position).getTitle());
         holder.NotizContentTxtV.setText(mNotizCardList.get(position).getContent());
         holder.NotizLastModTxtV.setText(mNotizCardList.get(position).getLast_modification());
-        /*holder.NotizImageV.setImageDrawable(mCtx.getResources().getDrawable(notiz.getImage()));*/
         holder.LocLat.setText(mNotizCardList.get(position).getLatitude());
         holder.LocLon.setText(mNotizCardList.get(position).getLongitude());
 
