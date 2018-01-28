@@ -102,18 +102,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public NotizCard readEntry(final long id) {
         SQLiteDatabase database = this.getReadableDatabase();
-        Cursor cursor = database.query(TABLE_NAME, new String[]{ID, TITLE, CONTENT, LATITUDE, LONGITUDE, IMAGE}, ID + " = ?", new String[]{String.valueOf(id)}, null, null, null);
-
+        Cursor cursor = database.query(TABLE_NAME, new String []{ID,LAST_MODIFICATION,TITLE,CONTENT,LATITUDE,LONGITUDE}, ID + " = ?", new String[]{String.valueOf(id)},null,null,null );
         NotizCard notizCard = null;
 
-        if (cursor != null && cursor.getCount() > 0) {
+        if(cursor != null && cursor.getCount() > 0){
             cursor.moveToFirst();
             notizCard = new NotizCard(cursor.getString(cursor.getColumnIndex(TITLE)));
             notizCard.setId(cursor.getLong(cursor.getColumnIndex(ID)));
             notizCard.setContent(cursor.getString(cursor.getColumnIndex(CONTENT)));
-            notizCard.setContent(cursor.getString(cursor.getColumnIndex(LATITUDE)));
-            notizCard.setContent(cursor.getString(cursor.getColumnIndex(LONGITUDE)));
-            notizCard.setContent(cursor.getString(cursor.getColumnIndex(IMAGE)));
+
         }
 
         Log.e("Database new Card", "sjucessful");
