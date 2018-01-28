@@ -13,7 +13,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
     RecyclerAdapter adapter;
     FloatingActionButton button;
     ShareActionProvider myShareActionProvider;
+    View view;
+    TextView count;
 
 
     @Override
@@ -60,6 +64,9 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        color();
+
 
     }
     @Override
@@ -110,5 +117,24 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, Settings.class);
         startActivity(intent);
         return true;
+    }
+    private void color ()   {
+        Intent myintent = getIntent();
+        int colornum = myintent.getIntExtra(Settings.EXTRA_COLORNUM,0);
+        switch (colornum) {
+            case 1:
+                view = MainActivity.this.getWindow().getDecorView();
+                view.setBackgroundResource(R.color.cardview_dark_background);
+                break;
+            case 2:
+                view = MainActivity.this.getWindow().getDecorView();
+                view.setBackgroundResource(R.color.colorPrimary);
+                break;
+            default:
+                view = MainActivity.this.getWindow().getDecorView();
+                view.setBackgroundResource(R.color.cardview_light_background);
+                break;
+        }
+
     }
 }
