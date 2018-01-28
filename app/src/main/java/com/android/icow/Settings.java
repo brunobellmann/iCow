@@ -1,6 +1,10 @@
 package com.android.icow;
 
 
+
+
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
@@ -18,10 +22,10 @@ public class Settings extends AppCompatActivity {
     Toolbar toolbar;
     ActionBar actionBar;
     TextView ändern;
-    public int colornum;
+    private int colornum;
 
     public static final String PREFS_NAME = "MyPrefsFile";
-    public static final String EXTRA_COLORNUM = "extra_colornum";
+    public static final String EXTRA_COLORNUM = "icow";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +57,6 @@ public class Settings extends AppCompatActivity {
             public void onClick(View view) {
                 increment();
                 color();
-                layout();
             }
 
         });
@@ -63,7 +66,6 @@ public class Settings extends AppCompatActivity {
             public void onClick(View view) {
                 decrement();
                 color();
-                layout();
             }
 
         });
@@ -136,12 +138,11 @@ public class Settings extends AppCompatActivity {
         editor.commit();
 
     }
-
     public void layout () {
         ändern = (TextView) findViewById(R.id.ändern);
         colornum =Integer.parseInt(ändern.getText().toString());
-        Intent intent = new Intent(Settings.this, MainActivity.class);
-        intent.putExtra(EXTRA_COLORNUM,colornum);
+        Intent myintent = new Intent(Settings.this, MainActivity.class);
+        myintent.putExtra(EXTRA_COLORNUM,colornum);
 
     }
 }
