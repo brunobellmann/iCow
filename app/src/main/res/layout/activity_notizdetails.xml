@@ -49,11 +49,6 @@
             android:paddingRight="16dp"
             android:paddingTop="6dp"
             android:textCursorDrawable="@null"/>
-        <!--android:textAppearance="@style/Text.Big"
-        android:textColorHint="@color/text_color_lighter"
-        android:textColor="@color/text_color"
-        pixlui:typeface="RobotoSlab-Bold.ttf"
-        android:textCursorDrawable="@null"-->
 
     </LinearLayout>
 
@@ -90,13 +85,9 @@
             android:scrollbarSize="4dp"
             android:scrollbarStyle="outsideOverlay">
 
-
-
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
-                        <!--android:paddingTop="@dimen/padding_half"-->
-
 
                         <EditText
                             android:id="@+id/detail_content"
@@ -115,9 +106,6 @@
                             android:textCursorDrawable="@null"
                             android:textSize="14sp"/>
                     </LinearLayout>
-
-
-
         </ScrollView>
 
     </android.support.design.widget.CoordinatorLayout>

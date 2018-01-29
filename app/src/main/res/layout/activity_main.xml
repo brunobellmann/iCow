@@ -7,7 +7,6 @@
     android:layout_height="match_parent"
     tools:context="com.android.icow.MainActivity">
 
-
     <android.support.v7.widget.Toolbar
         android:id="@+id/my_toolbar"
         android:layout_width="match_parent"
@@ -22,8 +21,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_scrollFlags="snap"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
-
-<!-- RecyclerView erstellt automatisch neue card_layouts.xml-->
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"
@@ -53,7 +50,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginRight="16dp" />
-
 
 </android.support.constraint.ConstraintLayout>
 

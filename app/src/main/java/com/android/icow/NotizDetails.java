@@ -1,31 +1,19 @@
 package com.android.icow;
 
-import android.content.Context;
 import android.content.Intent;
-import android.support.design.widget.Snackbar;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.ShareActionProvider;
 import android.support.v7.widget.Toolbar;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import static java.lang.String.valueOf;
 
 public class NotizDetails extends AppCompatActivity {
 
-    Toolbar toolbar;
     ActionBar actionBar;
-    NotizCard notizCard;
     EditText titleTxt, contentTxt;
     Button updateBtn, deleteBtn;
     DatabaseHelper dbh;
@@ -44,7 +32,7 @@ public class NotizDetails extends AppCompatActivity {
         actionBar = getSupportActionBar();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setTitle("Notiz " + getIntent().getExtras().getLong("ID"));
+        getSupportActionBar().setTitle("Notiz");
 
         //Intent
         Intent i = getIntent();
@@ -92,6 +80,8 @@ public class NotizDetails extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 dbh.updateEntry((valueOf(id)),titleTxt.getText().toString(),contentTxt.getText().toString());
+                Intent intent = new Intent(NotizDetails.this, MainActivity.class);
+                startActivity(intent);
             }
         });
 

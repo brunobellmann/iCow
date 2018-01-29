@@ -54,7 +54,6 @@ public class  RecyclerAdapter extends RecyclerView.Adapter<NotizViewHolder> {
         holder.RelativeLayoutCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mCtx, "You Clicked " + mNotizCardList.get(position).getId(), Toast.LENGTH_LONG).show();
                 Intent i = new Intent(mCtx,NotizDetails.class);
 
                 //LOAD DATA
