@@ -109,7 +109,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             notizCard = new NotizCard(cursor.getString(cursor.getColumnIndex(TITLE)));
             notizCard.setId(cursor.getLong(cursor.getColumnIndex(ID)));
             notizCard.setContent(cursor.getString(cursor.getColumnIndex(CONTENT)));
-
         }
 
         Log.e("Database new Card", "sjucessful");
@@ -118,12 +117,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return notizCard;
     }
 
-    /*public void deleteEntry(final NotizCard notizCard){
-        SQLiteDatabase database = this.getWritableDatabase();
-        database.delete(TABLE_NAME, ID+" = ?", new String[]{String.valueOf(notizCard.getId())});
-        database.close();
-    }*/
+    public Integer deleteEntry( String id){
 
+        SQLiteDatabase database = this.getWritableDatabase();
+        return database.delete(TABLE_NAME, "ID = ?", new String[] {id});
+    }
+
+    public Integer updateEntry(String id,String title,String content) {
+        SQLiteDatabase database = this.getWritableDatabase();
+
+            ContentValues values = new ContentValues();
+            values.put(TITLE, title);
+            values.put(CONTENT, content);
+
+            return database.update(TABLE_NAME,values,ID + " =?",new String[]{String.valueOf(id)});
+    }
 
 }
 
