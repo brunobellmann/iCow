@@ -6,10 +6,11 @@
     <!-- 3 Punkte als Menu<item android:id="@+id/action_settings" android:title="test"
         android:orderInCategory="100" app:showAsAction="never" />-->
 
+
     <item
-        android:id="@+id/menu_item_settings"
+        android:id="@+id/menu_item_camera"
         app:showAsAction="ifRoom"
-        android:title="Settings"
-        android:icon="@drawable/ic_settings_white_24dp">
+        android:title="Camera"
+        android:icon="@drawable/ic_camera_alt_white_24dp">
     </item>
 </menu>
