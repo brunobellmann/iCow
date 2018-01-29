@@ -89,7 +89,8 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
 
             case R.id.menu_item_camera:
-
+                Intent intentqrscanner = new Intent(this, qrscanner.class);
+                startActivity(intentqrscanner);
                 return true;
 
             case R.id.menu_item_settings:
@@ -100,9 +101,6 @@ public class MainActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
-
-
-
     }
 
     private void color ()   {
