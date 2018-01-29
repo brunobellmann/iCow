@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     FloatingActionButton button;
     ShareActionProvider myShareActionProvider;
     View view;
+    FloatingActionButton scannerButton;
 
 
     @Override
@@ -39,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
         toolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Einkaufsliste");
+        getSupportActionBar().setTitle("Notizliste");
 
 
         this.recyclerView = findViewById(R.id.recycler_view);

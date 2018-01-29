@@ -19,13 +19,16 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import static java.lang.String.valueOf;
+
 public class NotizDetails extends AppCompatActivity {
 
     Toolbar toolbar;
     ActionBar actionBar;
     NotizCard notizCard;
     EditText titleTxt, contentTxt;
-    Button updateBtn, deleteBtn, teeestbutton;
+    Button updateBtn, deleteBtn;
+    DatabaseHelper dbh;
 
 
     @Override
@@ -35,6 +38,7 @@ public class NotizDetails extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.my_toolbar);
         Button share = findViewById(R.id.button_share);
+        dbh = new DatabaseHelper(this);
 
         setSupportActionBar(toolbar);
         actionBar = getSupportActionBar();
@@ -73,5 +77,23 @@ public class NotizDetails extends AppCompatActivity {
                 }
             }
         });
+
+
+        deleteBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dbh.deleteEntry(valueOf(id));
+                Intent intent = new Intent(NotizDetails.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        updateBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dbh.updateEntry((valueOf(id)),titleTxt.getText().toString(),contentTxt.getText().toString());
+            }
+        });
+
     }
 }
