@@ -53,10 +53,21 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
+ //   @Override
+ /*   protected void onStop() {
+        super.onStop();
+        Intent myintent = getIntent();
+        int colornum = myintent.getIntExtra(Settings.EXTRA_COLORNUM,0);
+        color();
+
+    } */
+
     @Override
     protected void onResume() {
         super.onResume();
         refreshRecyclerView();
+        color();
     }
 
     private void refreshRecyclerView() {
@@ -89,6 +100,8 @@ public class MainActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+
+
     }
 
     private void color ()   {
@@ -98,10 +111,6 @@ public class MainActivity extends AppCompatActivity {
             case 1:
                 view = MainActivity.this.getWindow().getDecorView();
                 view.setBackgroundResource(R.color.cardview_dark_background);
-                break;
-            case 2:
-                view = MainActivity.this.getWindow().getDecorView();
-                view.setBackgroundResource(R.color.colorPrimary);
                 break;
             default:
                 view = MainActivity.this.getWindow().getDecorView();

@@ -15,7 +15,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.Switch;
-import android.widget.TextView;
+
+import java.net.IDN;
 
 
 public class Settings extends AppCompatActivity {
@@ -23,29 +24,29 @@ public class Settings extends AppCompatActivity {
     View view;
     Toolbar toolbar;
     ActionBar actionBar;
-    TextView ändern;
     Switch switch1;
     private int colornum;
 
     public static final String PREFS_NAME = "MyPrefsFile";
     public static final String EXTRA_COLORNUM = "icow";
+    private boolean switchonoff;
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        loadData();
+        updateViews();
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-    /*    SharedPreferences sp = getSharedPreferences(PREFS_NAME, 0);
-        colornum = sp.getInt("colornum", colornum);
+
         switch1 = findViewById(R.id.switch1);
-        if (colornum == 1) {
-            switch1.setChecked(true);
-        } else {
-            switch1.setChecked(false);
-        }
-        color(); */
-
-
+        switch1.setChecked(false);
         Toolbar toolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(toolbar);
 
@@ -55,24 +56,38 @@ public class Settings extends AppCompatActivity {
         getSupportActionBar().setTitle("Einstellungen");
 
 
-        switch1 = findViewById(R.id.switch1);
         switch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
                 colornum=1;
-            } else {colornum =0;}
-
+            } else {colornum=0;}
                 color();
         }
 
 
     });
+
+
+
+        
     }
+
+    private void loadData() {
+        SharedPreferences sp = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+        switchonoff = sp.getBoolean(PREFS_NAME,false);
+    }
+
+    private void updateViews() {
+        switch1.setChecked(switchonoff);
+        color();
+    }
+
+
 
     private void color() {
         switch (colornum) {
             case 1:
-                view = this.getWindow().getDecorView();
+                view = this.getWindow().getDecorView(); 
                 view.setBackgroundResource(R.color.cardview_dark_background);
                 break;
             default:
@@ -90,17 +105,13 @@ public class Settings extends AppCompatActivity {
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        SharedPreferences sp = getSharedPreferences(PREFS_NAME, 0);
+    protected void onPause() {
+        super.onPause();
+        SharedPreferences sp = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
-        if (switch1.isChecked()) {
-            editor.putInt("colornum", 1);
-        } else editor.putInt("colornum",0);
+        editor.putBoolean(PREFS_NAME, switch1.isChecked());
         editor.commit();
-
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
