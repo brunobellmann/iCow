@@ -35,14 +35,17 @@ public class Settings extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-       /* SharedPreferences sp = getSharedPreferences(PREFS_NAME, 0);
+    /*    SharedPreferences sp = getSharedPreferences(PREFS_NAME, 0);
         colornum = sp.getInt("colornum", colornum);
-        ändern = findViewById(R.id.ändern);
-        ändern.setText(String.valueOf(colornum));
-        color();
-        */
+        switch1 = findViewById(R.id.switch1);
+        if (colornum == 1) {
+            switch1.setChecked(true);
+        } else {
+            switch1.setChecked(false);
+        }
+        color(); */
 
-        ändern = findViewById(R.id.ändern);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(toolbar);
 
@@ -57,10 +60,7 @@ public class Settings extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
                 colornum=1;
-                ändern.setText(String.valueOf(colornum));
-            } else {colornum =0;
-                    ändern.setText(String.valueOf(colornum));
-                    }
+            } else {colornum =0;}
 
                 color();
         }
@@ -70,8 +70,6 @@ public class Settings extends AppCompatActivity {
     }
 
     private void color() {
-        ändern = findViewById(R.id.ändern);
-        colornum = Integer.valueOf(ändern.getText().toString());
         switch (colornum) {
             case 1:
                 view = this.getWindow().getDecorView();
@@ -96,7 +94,9 @@ public class Settings extends AppCompatActivity {
         super.onDestroy();
         SharedPreferences sp = getSharedPreferences(PREFS_NAME, 0);
         SharedPreferences.Editor editor = sp.edit();
-        editor.putInt("colornum", colornum);
+        if (switch1.isChecked()) {
+            editor.putInt("colornum", 1);
+        } else editor.putInt("colornum",0);
         editor.commit();
 
     }
@@ -110,8 +110,10 @@ public class Settings extends AppCompatActivity {
 
     public boolean onOptionsItemSelected(MenuItem item) {
 
-                    ändern = findViewById(R.id.ändern);
-                    colornum = Integer.valueOf(ändern.getText().toString());
+                    switch1 = findViewById(R.id.switch1);
+                    if (switch1.isChecked()) {
+                        colornum = 1;
+                    }else {colornum = 0;}
                     Intent myintent = new Intent(this, MainActivity.class);
                     myintent.putExtra(EXTRA_COLORNUM, colornum);
                     startActivity(myintent);
