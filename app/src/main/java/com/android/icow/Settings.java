@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.ActionBar;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -23,7 +24,7 @@ public class Settings extends AppCompatActivity {
     View view;
     Toolbar toolbar;
     ActionBar actionBar;
-    TextView ändern;
+    TextView ändern,dunkelmodus;
     Switch switch1;
     private int colornum;
 
@@ -41,7 +42,7 @@ public class Settings extends AppCompatActivity {
         ändern.setText(String.valueOf(colornum));
         color();
         */
-
+        dunkelmodus = findViewById(R.id.dunkelmodus);
         ändern = findViewById(R.id.ändern);
         Toolbar toolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(toolbar);
@@ -76,10 +77,12 @@ public class Settings extends AppCompatActivity {
             case 1:
                 view = this.getWindow().getDecorView();
                 view.setBackgroundResource(R.color.cardview_dark_background);
+                dunkelmodus.setTextColor(getResources().getColor(R.color.dunkelmodus_light));
                 break;
             default:
                 view = this.getWindow().getDecorView();
                 view.setBackgroundResource(R.color.cardview_light_background);
+                dunkelmodus.setTextColor(getResources().getColor(R.color.dunkelmodus_dark));
                 break;
         }
 
@@ -112,6 +115,7 @@ public class Settings extends AppCompatActivity {
 
                     ändern = findViewById(R.id.ändern);
                     colornum = Integer.valueOf(ändern.getText().toString());
+        Log.e("test", "color");
                     Intent myintent = new Intent(this, MainActivity.class);
                     myintent.putExtra(EXTRA_COLORNUM, colornum);
                     startActivity(myintent);
