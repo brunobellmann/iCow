@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.Switch;
+import android.widget.TextView;
 
 import java.net.IDN;
 
@@ -26,6 +27,7 @@ public class Settings extends AppCompatActivity {
     ActionBar actionBar;
     Switch switch1;
     private int colornum;
+    TextView dunkelmodus;
 
     public static final String PREFS_NAME = "MyPrefsFile";
     public static final String EXTRA_COLORNUM = "icow";
@@ -49,6 +51,7 @@ public class Settings extends AppCompatActivity {
         switch1.setChecked(false);
         Toolbar toolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(toolbar);
+        dunkelmodus = findViewById(R.id.dunkelmodus);
 
         actionBar = getSupportActionBar();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -89,10 +92,12 @@ public class Settings extends AppCompatActivity {
             case 1:
                 view = this.getWindow().getDecorView(); 
                 view.setBackgroundResource(R.color.cardview_dark_background);
+                dunkelmodus.setTextColor(getResources().getColor(R.color.dunkelmodus_light));
                 break;
             default:
                 view = this.getWindow().getDecorView();
                 view.setBackgroundResource(R.color.cardview_light_background);
+                dunkelmodus.setTextColor(getResources().getColor(R.color.dunkelmodus_dark));
                 break;
         }
 
