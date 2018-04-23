@@ -32,7 +32,7 @@ public class NotizDetails extends AppCompatActivity {
         actionBar = getSupportActionBar();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setTitle("Notiz");
+        getSupportActionBar().setTitle(R.string.title_activity_details);
 
         //Intent
         Intent i = getIntent();

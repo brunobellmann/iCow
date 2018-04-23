@@ -1,4 +1,9 @@
 <resources>
+    <string name="app_name">iCow</string>
+    <string name="action_settings">settings</string>
+    <string name="Test_text">TESTESTETSTEtSDSDLOLOLOLOL</string>
+    <string name="title">Title</string>
+    <string name="content">Your note</string>
 
     <!-- Strings related to Settings -->
 
@@ -71,17 +76,11 @@
     <string name="pref_ringtone_silent">Silent</string>
 
     <string name="pref_title_vibrate">Vibrate</string>
-    <string name="app_name">iCow</string>
-    <string name="action_settings">settings</string>
-    <string name="Test_text">TESTESTETSTEtSDSDLOLOLOLOL</string>
-
-    <string name="title">Titel</string>
-    <string name="content">Ihre Notiz</string>
-    <string name="title_activity_main">Notizliste</string>
-    <string name="title_activity_settings">Einstellungen</string>
-    <string name="toast_no_title">"Fehler beim speichern, bitte noch einen Titel eingeben."</string>
-    <string name="toast_no_content">"Fehler beim speichern, bitte noch einen Text eingeben."</string>
-    <string name="darkmode">Dunkelmodus</string>
-    <string name="title_activity_add">Notiz hinzufügen</string>
-    <string name="title_activity_details">Notiz</string>
+    <string name="title_activity_main">Your notes</string>
+    <string name="toast_no_title">Failed to save. Please enter a title!</string>
+    <string name="toast_no_content">Failed to save. Please enter a text!</string>
+    <string name="darkmode">Dark mode</string>
+    <string name="title_activity_add">Add a note</string>
+    <string name="title_activity_details">Details</string>
+    <string name="title_activity_settings">Settings</string>
 </resources>

@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
         toolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Notizliste");
+        getSupportActionBar().setTitle(R.string.title_activity_main);
 
 
         this.recyclerView = findViewById(R.id.recycler_view);

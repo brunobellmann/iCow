@@ -30,7 +30,7 @@ public class Notiz_Add extends AppCompatActivity {
         actionBar = getSupportActionBar();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setTitle("Notiz hinzufügen");
+        getSupportActionBar().setTitle(R.string.title_activity_add);
 
         this.notizCard = new NotizCard();
 
@@ -85,10 +85,10 @@ public class Notiz_Add extends AppCompatActivity {
 
             case R.id.menu_item_save:
                 if (notizCard.getTitle() == null) {
-                    Toast.makeText(Notiz_Add.this, "Fehler beim speichern, bitte noch ein Titel eingeben.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Notiz_Add.this, R.string.toast_no_title, Toast.LENGTH_SHORT).show();
                 }
                 else if (notizCard.getContent() == null) {
-                    Toast.makeText(Notiz_Add.this, "Fehler beim speichern, bitte noch einen Text eingeben.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Notiz_Add.this, R.string.toast_no_content, Toast.LENGTH_SHORT).show();
                 }
                 else{
                     DatabaseHelper.getInstance(Notiz_Add.this).createEntry(notizCard);

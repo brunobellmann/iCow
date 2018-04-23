@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#0277bd</color>
+    <!-- backup <color name="colorPrimary">#0277bd</color>-->
+    <color name="colorPrimaryDark">#004c8c</color>
+    <color name="colorAccent">#0277bd</color>
+    <color name="normal">#ffffff</color>
+    <color name="pressed">#f0f0f0</color>
+    <color name="selected">#dddddd</color>
+    <color name="kitkat_gray_dark">#25000000</color>
+    <color name="kitkat_gray_light">#19000000</color>
+    <color name="dunkelmodus_dark">#232323</color>
+    <color name="dunkelmodus_light">#ffffff</color>
+</resources>
