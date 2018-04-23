@@ -1,5 +1,12 @@
 # iCow
 
+23.04.18:-------------------------------------------------------------------------------------------
+
+Siehe Commitmessage
+
+-added translation
+-other fixes
+
 11.01.2018:-----------------------------------------------------------------------------------------
 
 RecyclerView ist eingebunden und ein Test-Element wurde über eine Liste erstellt.
